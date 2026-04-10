@@ -1,0 +1,68 @@
+extends ../layouts/layout.pug
+
+block content
+	header.header
+		.container
+			.h1 Advertising campaign for business immigrants
+
+	main.main
+		.container
+			.main-top
+				p.font-18 Target customers are businessmen from Asian countries 
+				//nav for mobile
+				.main-nav
+					ul.main-menu
+						li.menu-item
+							a.menu-link(href="#anchor1") New clients
+						li.menu-item
+							a.menu-link(href="#anchor2") How it works
+						li.menu-item
+							a.menu-link(href="#anchor3") No spend on your end
+				
+				p.font-18 We propose collaborating with an attorney
+			
+			.main-group
+				.main-image
+					picture
+						source(media="(min-width: 768px)" srcset="./img/main.webp 1x, ./img/main@2x.webp 2x" )
+						img(src='./img/main-w375.webp', srcset='./img/main-w375@2x.webp 2x' width='430' height='310' loading='lazy' alt='img')
+				
+				a.button(href="#!") I'm interested
+
+			.article-wrapper
+				article.article.font-16#anchor1
+					p Business immigrants from Asia are actively seeking a path to the U.S. — and they need attorneys who handle business immigration. The demand is real, the clients are solvent, and the cases are substantial.
+					p We're a U.S.-based aviation company — a full-stack operation covering parts supply, aircraft maintenance and repair, private charters, and air transportation domestically and worldwide.
+					p We're looking for investors to help build a new training facility in the Lake Tahoe area. Current investment need: $600,000.
+					p To reach the right people, we're building a targeted advertising campaign.
+					p Every lead it generates becomes your potential client. Not just the ones interested in our business — all of them. Every lead is yours to serve.
+			
+			.article-group
+				.article-group-left
+					article.article.font-16#anchor2
+						.article-part
+							p.font-18.hide-mobile How it works
+							p We build and fund the entire campaign—a lead-magnet website and Google Ads aimed specifically at businessmen from Asian countries planning to relocate to the U.S.
+							
+							p You engage with the leads as they come in: answer questions, follow up, guide them through the process.
+							p That's what you already do — except these clients come to you pre-qualified and ready to talk.
+							p Among those leads, some will be interested in investing in our business.
+							p For those clients, you'd provide additional services — representation, administrative support, financial consulting related to the investment.
+
+					article.article.article-column.font-16#anchor3
+						.article-part
+							p.font-18 We pay for:
+							p The website, the advertising campaign, and our administrative expenses (email services, teleconferencing, software, etc.)
+						.article-part
+							p.font-18 You pay for:
+							p Your own administrative expenses only (email services, teleconferencing, software, etc.)
+
+							p.font-18 No marketing budget required
+				
+				.article-short
+					.article-part
+						p.font-18 New immigration clients
+					.article-part
+						p.font-18 No marketing spend on your end
+block variables
+	-var title = "Project";
