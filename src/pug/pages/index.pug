@@ -1,13 +1,33 @@
 extends ../layouts/layout.pug
 
 block content
-	header.header
+	.header
 		.container
 			h1.h1 Advertising campaign for business immigrants
 
-	main.main
+	.main
 		.container
-			.main-top
+			.content-desktop
+				.content-desktop-text
+					.h1 Advertising campaign for business immigrants
+					.content-desktop-button
+						a.button(href="#!") I'm interested
+						.content-desktop-group
+							p.font-18 Target customers are businessmen from Asian countries
+							p.font-18 We propose collaborating with an attorney
+				
+					article.article.font-16
+						p Business immigrants from Asia are actively seeking a path to the U.S. — and they need attorneys who handle business immigration. The demand is real, the clients are solvent, and the cases are substantial.
+						p We're a U.S.-based aviation company — a full-stack operation covering parts supply, aircraft maintenance and repair, private charters, and air transportation domestically and worldwide.
+						p We're looking for investors to help build a new training facility in the Lake Tahoe area. Current investment need: $600,000.
+						p To reach the right people, we're building a targeted advertising campaign.
+						p Every lead it generates becomes your potential client. Not just the ones interested in our business — all of them. Every lead is yours to serve.
+				
+				
+				.content-desktop-image
+					img(src='./img/main.webp', srcset='./img/main@2x.webp 2x' width='840' height='760' loading='lazy' alt='img')
+			
+			.content-mobile
 				p.font-18 Target customers are businessmen from Asian countries 
 				//nav for mobile
 				.main-nav
@@ -23,9 +43,7 @@ block content
 			
 			.main-group
 				.main-image
-					picture
-						source(media="(min-width: 768px)" srcset="./img/main.webp 1x, ./img/main@2x.webp 2x" )
-						img(src='./img/main-w375.webp', srcset='./img/main-w375@2x.webp 2x' width='430' height='310' loading='lazy' alt='img')
+					img(src='./img/main-w375.webp', srcset='./img/main-w375@2x.webp 2x' width='430' height='310' loading='lazy' alt='img')
 				
 				a.button(href="#!") I'm interested
 
