@@ -320,6 +320,8 @@ h1, .h1{
 	@media (min-width: 1200px) {
 		display: flex;
 		padding-top: 30px;
+		position: relative;
+		
 	}
 	@media (min-width: 1920px) {
       
@@ -350,14 +352,19 @@ h1, .h1{
 	border-radius: 12px;
 	min-height: 100%;
 	background-position: left top;
-	
+	transition: width .3s; 
 	@media (min-width: 1800px) {
 	  width: 840px;
 	  flex-shrink: 0;
 	}
+	&:hover{
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 840px;
+	}
 }
-.main-nav{
-	
+.main-nav{	
 	border-radius: 12px;
 	margin-left: 16px;
 	margin-right: 16px;
