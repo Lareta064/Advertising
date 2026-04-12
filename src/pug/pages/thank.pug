@@ -1,0 +1,16 @@
+extends ../layouts/layout.pug
+
+block content
+	main.inner-page
+		.inner-page-bg(style="background-image:url(./img/fake-bg.webp)")
+		.popup-wrapper
+			a.special-link(href="index.html")
+			.popup-wrapper-content
+				a.popup-close.btn-close(href="index.html")
+				.popup-title Thank you for your request
+				.popup-subtitle A confirmation email email@email.com has been sent to email.com
+				.form-footer
+					a.button.h-50.w-100(href="index.html") Return to Home
+						
+block variables
+	-var title = "Project";

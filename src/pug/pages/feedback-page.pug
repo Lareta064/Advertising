@@ -1,0 +1,27 @@
+extends ../layouts/layout.pug
+
+block content
+	main.inner-page
+		.inner-page-bg(style="background-image:url(./img/fake-bg.webp)")
+		.popup-wrapper
+			a.special-link(href="index.html")
+			.popup-wrapper-content
+				a.popup-close.btn-close(href="index.html")
+				//- .popup-title Let’s discuss cooperation
+				.popup-subtitle Leave your contact details and we’ll get back to you with more information.
+				form.feedback-form(action="" method="method")
+					.form-item
+						input(type="text" placeholder="First name")
+					.form-item
+						input(type="text" placeholder="Last name")
+					.form-item
+						input(type="text" placeholder="E-mail *")
+					.form-item
+						textarea(type="text" placeholder="Message")
+					
+					.form-footer
+						button.button.h-50.w-100(type="submit") I'm interested
+						p.txt-muted We’ll only use your contact details to reply to your inquiry.
+						
+block variables
+	-var title = "Project";
