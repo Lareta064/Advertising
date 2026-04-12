@@ -228,16 +228,25 @@ input::placeholder, textarea::placeholder{
 	}
 }
 .w-100{width: 100%!important;}
+.form-open-anchor .button{
+	   position: absolute;
+		top: -25px;
+		z-index: 2;
+		left: 50%;
+		transform: translateX(-50%);
+		right: 16px;
+		width: 330px;
+}
 .form-open-anchor .button.float-button{
 	@media(max-width:1199px){
 		 position: fixed;
-		  left: 50%;
+		 
 		  bottom: 20px;
 		  top: auto;
-		  transform: translateX(-50%);
+		  
 		  z-index: 4;
-		  width:calc(100vw - 32px);
-		  max-width:400px ;
+		//   width:calc(100vw - 64px);
+		//   max-width:420px;
 		}
 }
 h1, .h1{
@@ -333,9 +342,9 @@ h1, .h1{
 		display: flex;
 		flex-direction: column;
 		row-gap: 10px;
-		width: 57%;
+		width: 65%;
 		padding-right: 20px;
-		flex-grow: 1;
+		
 	}
 	@media (min-width: 1365px) {
 	  row-gap: 20px;
@@ -344,24 +353,34 @@ h1, .h1{
 		font-size: 19px;
 	  }
 	}
-	
+	@media (min-width: 1800px){
+		width:unset;
+		flex-shrink: unset;
+		flex:1;
+	}
+
 }
 .content-desktop-image{
-	width: 40%;
-	width: 35%;
+	width: 35% ;
+	position: absolute;
+	top: 0;
+	right: 0;
 	border-radius: 12px;
 	min-height: 100%;
 	background-position: left top;
-	transition: width .3s; 
+	background-size: cover;
+	transition: .7s; 
 	@media (min-width: 1800px) {
 	  width: 840px;
 	  flex-shrink: 0;
+	  position: relative;
+	  
 	}
-	&:hover{
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 840px;
+	@media (min-width: 1200px) and (max-width: 1799px){
+		&:hover{
+			
+			width: 840px;
+		}
 	}
 }
 .main-nav{	
@@ -403,17 +422,33 @@ h1, .h1{
 		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='36' height='24' viewBox='0 0 36 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M24 19L31 12L24 5' stroke='%23E6E6E6' stroke-width='0.6' stroke-linecap='round' stroke-linejoin='round' /%3e%3cpath d='M3 12H31' stroke='%23E6E6E6' stroke-width='0.6' stroke-linecap='round' stroke-linejoin='round' /%3e%3c/svg%3e");
 	}
 }
+.backTop{
+	position: fixed;
+	right: 5px;
+	bottom: 70px;
+	display: block;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: var(--color-icon);
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='36' height='24' viewBox='0 0 36 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M24 19L31 12L24 5' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3e%3cpath d='M3 12H31' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3e%3c/svg%3e");
+	transform: rotate(-90deg);
+	background-size: 20px;
+	z-index: 10;
+	opacity: 0;
+	transition: .3s; 
+	&.active{
+		opacity: 1;
+	}
+	@media (min-width: 1200px) {
+	 display: none!important;
+	 &.active{ display: none!important;}
+	}
+}
 .menu-item +.menu-item {border-top: 1px solid rgba(239, 239, 241, 0.49);
 }
 .main-group{
 	position: relative;
-	.form-open-anchor{
-		position: absolute;
-		top: -25px;
-		z-index: 2;
-		left: 16px;
-		right: 16px;
-	}
 	
 	@media (min-width: 1200px) {
 	 display: none;
@@ -524,21 +559,7 @@ h1, .h1{
 	margin-top: 20px;
 	 @media (min-width: 1200px) {margin-top: 0px;}
 }
-.article-short{
-	align-self: flex-end;
-	background-color: #fff; 
-	height: fit-content;
-	padding-top: 20px;
-	 .article-part{
-		width: fit-content;
-		padding-right: 50px;
-	 }
-	  .article-part + .article-part{margin-top: 20px;}
-	display: none;
-	@media (min-width: 1200px) {
-	   display: block;
-	}
-}
+
 .popup-wrapper{
 	position: absolute;
 	inset:0;
@@ -558,6 +579,12 @@ h1, .h1{
 	@media (min-width: 1200px) {
 	   align-items: center;
 	   padding-top: 0;
+	}
+	.font-18{
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 147%;
+		color: var(--black);
 	}
 }
 .popup-wrapper-content{
@@ -597,9 +624,7 @@ h1, .h1{
 	}
 }
 .popup-subtitle{
-	font-weight: 500;
-	font-size: 18px;
-	line-height: 147%;
+	
 	margin-bottom: 16px;
 }
 .form-item{
@@ -618,6 +643,7 @@ h1, .h1{
 	textarea{
 		height: 80px;
 		padding: 16px;
+		resize: none;
 	}
 	input::placeholder{
 		font-family: var(--font-family);
@@ -630,10 +656,10 @@ h1, .h1{
 .form-item +.form-item{margin-top: 10px;}
 .form-footer{
 	margin-top: 16px;
-	.txt-muted{
-		color: var(--black);
+	.font-18{
+		
 		margin-top: 8px;
-		font-size: 14px;
+		
 	}
 	@media (min-width: 768px) {
 	  margin-top: 24px;

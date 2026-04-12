@@ -8,7 +8,7 @@ block content
 			.popup-wrapper-content
 				a.popup-close.btn-close(href="index.html")
 				//- .popup-title Let’s discuss cooperation
-				.popup-subtitle Leave your contact details and we’ll get back to you with more information.
+				.popup-subtitle.font-18 Leave your contact details and we’ll get back to you with more information.
 				form.feedback-form(action="" method="method")
 					.form-item
 						input(type="text" placeholder="First name")
@@ -20,8 +20,10 @@ block content
 						textarea(type="text" placeholder="Message")
 					
 					.form-footer
-						button.button.h-50.w-100(type="submit") I'm interested
-						p.txt-muted We’ll only use your contact details to reply to your inquiry.
+						//- button.button.h-50.w-100(type="submit" ) I'm interested
+						a.button.h-50.w-100(href='thank.html') I'm interested
+						
+						p.font-18 We’ll only use your contact details to reply to your inquiry.
 						
 block variables
 	-var title = "Project";

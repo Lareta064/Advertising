@@ -7,10 +7,19 @@ document.addEventListener('DOMContentLoaded', function () {
   function toggleFloatButton() {
     const { top } = anchor.getBoundingClientRect();
 	console.log(top);
-    button.classList.toggle('float-button', top < 300);
+    button.classList.toggle('float-button', top < 290);
   }
 
   window.addEventListener('scroll', toggleFloatButton, { passive: true });
   window.addEventListener('resize', toggleFloatButton);
   toggleFloatButton();
+
+  const backTop = document.querySelector('#backTop');
+  window.addEventListener('scroll', function(){
+	if(window.scrollY > 200){
+		backTop.classList.add('active');
+	}else{
+		backTop.classList.remove('active');
+	}
+  })
 });
