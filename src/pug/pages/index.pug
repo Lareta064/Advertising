@@ -4,7 +4,10 @@ block content
 	#top
 	.header
 		.container
-			h1.h1 Advertising campaign for business immigrants
+			.header-row
+				button.menu-toggle#menu-toggle
+					span
+				h1.h1 Advertising campaign for business immigrants
 
 	.main
 		.container
@@ -80,8 +83,39 @@ block content
 							p Your own administrative expenses only (email services, teleconferencing, software, etc.)
 
 							p.font-18 No marketing budget required
-				
-	a(href="#top").backTop#backTop
+	footer.footer
+		.container
+			.footer-content
+				nav.footer-menu
+					a.font-18(href="") 2010-2026© Executive Aviation Corporation
+					a(href="mailto:your@email.com").contact-item.font-18
+						i.icon-envelope
+						span your@email.com
 
+					a.font-18(href="privacy.html") Privacy Policy
+	//fixed menu
+	.nav-menu-wrapper#menu-wrapper
+		ul.nav-menu
+			li.nav-menu-item.hide-desktop
+				a(href="index.html") Home
+			li.nav-menu-item.hide-desktop
+				a(href="#anchor2") How it works
+			li.nav-menu-item.hide-desktop
+				a(href="feedback-page.html") Requiest form
+			
+			li.nav-menu-item
+				a(href="privacy.html") Privacy Policy
+
+		.nav-contacts
+			a(href="mailto:your@email.com").contact-item.font-18
+				i.icon-envelope
+				span your@email.com
+
+			a(href="#!").fancy-item.font-18 Executive Aviation Corporation
+
+	button(type='button' data-popup-btn='test-popup') Открыть Попап
+	.popup-wrapper(data-popup='test-popup')
+		.popup-body
+			h1 Content111
 block variables
 	-var title = "Project";

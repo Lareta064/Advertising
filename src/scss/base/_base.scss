@@ -1,16 +1,6 @@
 @use '_var' as *;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
-/*
-section.inner-promo(
-  style="background-image: image-set(url('./img/inner-promo.webp') 1x, url('./img/inner-promo@2x.webp') 2x);
-         -webkit-background-image: -webkit-image-set(url('./img/inner-promo.webp') 1x, url('./img/inner-promo@2x.webp') 2x);"
-)
- @media (-webkit-min-device-pixel-ratio: 2), 
-(min-resolution: 192dpi) { 
 
-    .box{background:url('images/box-bg@2x.png') no-repeat top left;}
-}
- */
 @font-face {
     font-family: 'Inter';
     src: url('../fonts/Inter-Regular.woff2') format('woff2');
@@ -75,7 +65,8 @@ body {
 	color: var(--black);
 }
 .lock{
-	overflow: hidden; 
+	overflow: hidden;
+	@media(min-width:1200px){overflow: visible;}
 }
 
 a,
@@ -151,6 +142,77 @@ input::placeholder, textarea::placeholder{
 	@media (min-width: 1200px) {
 		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z' stroke='%23EFEFEF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3e%3cpath d='M15 9L9 15' stroke='%23EFEFEF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3e%3cpath d='M9 9L15 15' stroke='%23EFEFEF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3e%3c/svg%3e");
 	}
+}
+.icon-envelope{
+	width: 26px;
+	height: 26px;
+	display: block;
+	background-size: contain;
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' encoding='utf-8'?%3e%3c!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --%3e%3csvg fill='%23000000' width='800px' height='800px' viewBox='0 -5 32 32' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid'%3e%3cpath d='M29.000,22.000 L3.000,22.000 C1.346,22.000 -0.000,20.654 -0.000,19.000 L-0.000,3.000 C-0.000,1.346 1.346,-0.000 3.000,-0.000 L29.000,-0.000 C30.654,-0.000 32.000,1.346 32.000,3.000 L32.000,19.000 C32.000,20.654 30.654,22.000 29.000,22.000 ZM3.000,20.000 L29.000,20.000 C29.551,20.000 30.000,19.552 30.000,19.000 L30.000,3.317 L16.651,14.759 C16.463,14.920 16.232,15.000 16.000,15.000 C15.768,15.000 15.537,14.920 15.349,14.759 L2.000,3.317 L2.000,19.000 C2.000,19.552 2.449,20.000 3.000,20.000 ZM28.464,2.000 L3.536,2.000 L16.000,12.683 L28.464,2.000 Z'/%3e%3c/svg%3e");
+	
+}
+/*burger*/
+.menu-toggle {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  justify-content:center;
+  align-items: center;
+  cursor: pointer;
+  display: none;
+//   border: 1px solid #000;
+  border-radius: 1px;
+}
+  @media (max-width: 1199px) { 
+	.menu-toggle{ display: flex;
+		position: relative;
+ 		z-index: 4;
+	}
+  }
+.menu-toggle span {
+  position: relative;
+  border-radius: 2px;
+  width: 28px;
+  height: 2px;
+  background-color: #000;
+}
+
+.menu-toggle span::before,
+.menu-toggle span::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 28px;
+  height: 2px;
+  transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+  background-color: #000;
+}
+
+.menu-toggle span::before {
+  top: -9px;
+}
+
+.menu-toggle span::after {
+  top: 9px;
+}
+
+.menu-toggle.active span {
+  background-color: transparent;
+}
+
+.menu-toggle.active span::before,
+.menu-toggle.active span::after {
+  top: 0;
+  transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+  background-color: #000;
+}
+
+.menu-toggle.active span::before {
+  transform: rotate(45deg);
+}
+
+.menu-toggle.active span::after {
+  transform: rotate(-45deg);
 }
 .main{
 	@media (max-width: 1199px) {
@@ -239,23 +301,20 @@ input::placeholder, textarea::placeholder{
 }
 .form-open-anchor .button.float-button{
 	@media(max-width:1199px){
-		 position: fixed;
-		 
+		 position: fixed;		 
 		  bottom: 20px;
-		  top: auto;
-		  
-		  z-index: 4;
-		//   width:calc(100vw - 64px);
-		//   max-width:420px;
+		  top: auto;		  
+		  z-index: 4;		
 		}
 }
 h1, .h1{
 	font-family: var(--font-family);
 	font-weight: 600;
-	font-size: 22px;
+	font-size: 18px;
 	line-height: 1.11;
 	text-transform: uppercase;
 	color: var(--black);
+	@media (min-width: 390px) { font-size: 20px;}
 	@media (min-width: 992px) { font-size: 24px;}
 	@media (min-width: 1200px) { font-size: 28px; font-weight: 700;}
 	@media (min-width: 1440px) {
@@ -297,11 +356,18 @@ h1, .h1{
 	  display: none;
 	}
 }
+.header-row{
+	display: flex;
+	align-items: center;
+	column-gap: 18px;
+	.h1{
+		flex-grow:1;
+	}
+}
 .header .h1{
 	text-transform: uppercase;
 }
 .content-mobile{
-	
 	padding-bottom: 41px;
 	display: flex;
 	flex-direction: column;
@@ -320,8 +386,6 @@ h1, .h1{
 	   align-items: center;
 	    .font-18{font-size: 20px;}
 	}
-	
-	
 }
 .content-desktop-group>*+*{margin-top: 2px;}
 .content-desktop{
@@ -358,13 +422,12 @@ h1, .h1{
 		flex-shrink: unset;
 		flex:1;
 	}
-
 }
 .content-desktop-image{
 	width: 35% ;
 	position: absolute;
-	top: 0;
-	right: 0;
+	position: relative;
+	
 	border-radius: 12px;
 	min-height: 100%;
 	background-position: left top;
@@ -374,14 +437,8 @@ h1, .h1{
 	  width: 840px;
 	  flex-shrink: 0;
 	  position: relative;
-	  
 	}
-	@media (min-width: 1200px) and (max-width: 1799px){
-		&:hover{
-			
-			width: 840px;
-		}
-	}
+
 }
 .main-nav{	
 	border-radius: 12px;
@@ -398,8 +455,6 @@ h1, .h1{
 .menu-item{
 	display: flex;
 	align-items: center;
-	
-	
 }
 .menu-link{
 	width: 100%;
@@ -423,29 +478,7 @@ h1, .h1{
 		background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='36' height='24' viewBox='0 0 36 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M24 19L31 12L24 5' stroke='%23E6E6E6' stroke-width='0.6' stroke-linecap='round' stroke-linejoin='round' /%3e%3cpath d='M3 12H31' stroke='%23E6E6E6' stroke-width='0.6' stroke-linecap='round' stroke-linejoin='round' /%3e%3c/svg%3e");
 	}
 }
-.backTop{
-	position: fixed;
-	right: 5px;
-	bottom: 70px;
-	display: block;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	background-color: var(--color-icon);
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='36' height='24' viewBox='0 0 36 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M24 19L31 12L24 5' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3e%3cpath d='M3 12H31' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3e%3c/svg%3e");
-	transform: rotate(-90deg);
-	background-size: 20px;
-	z-index: 10;
-	opacity: 0;
-	transition: .3s; 
-	&.active{
-		opacity: 1;
-	}
-	@media (min-width: 1200px) {
-	 display: none!important;
-	 &.active{ display: none!important;}
-	}
-}
+
 .menu-item +.menu-item {border-top: 1px solid rgba(239, 239, 241, 0.49);
 }
 .main-group{
@@ -515,10 +548,6 @@ h1, .h1{
 				color: var(--color-btn-white);
 			}
 		}
-	}
-	
-	@media (min-width: 1200px) {
-		
 	}
 	
 }
@@ -619,10 +648,11 @@ h1, .h1{
 	color: var(--black);
 	margin-bottom: 16px;
 	@media (min-width: 1200px) {
-	 font-size: 20px;
+	 font-size: 22px;
 	 line-height: 147%;
 	 margin-bottom: 30px;
 	}
+	&>*+*{margin-top: 20px;}
 }
 .popup-subtitle{
 	
@@ -672,4 +702,124 @@ h1, .h1{
 }
 form .button{
 	width: 100%;
+}
+.nav-menu-wrapper{
+	position: fixed;
+	top: 75px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 10;
+	background-color: #fff;
+	background-color: rgba(46, 59, 66, .95);
+	width: 100%;
+	max-width: 240px;
+	transition: .3s; 
+	transform: translateX(-110%);
+	padding: 40px 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	&.active{
+		transform: translateX(0);
+	}
+	@media (min-width: 1200px) {
+		display: none;
+	}
+}
+.nav-contacts{
+	width: 100%;
+	&>*+*{margin-top: 16px;}
+	.fancy-item, .contact-item{color: white;}
+	.contact-item i{
+			background-image: url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' encoding='utf-8'?%3e%3c!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --%3e%3csvg fill='%23ffffff' width='800px' height='800px' viewBox='0 -5 32 32' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid'%3e%3cpath d='M29.000,22.000 L3.000,22.000 C1.346,22.000 -0.000,20.654 -0.000,19.000 L-0.000,3.000 C-0.000,1.346 1.346,-0.000 3.000,-0.000 L29.000,-0.000 C30.654,-0.000 32.000,1.346 32.000,3.000 L32.000,19.000 C32.000,20.654 30.654,22.000 29.000,22.000 ZM3.000,20.000 L29.000,20.000 C29.551,20.000 30.000,19.552 30.000,19.000 L30.000,3.317 L16.651,14.759 C16.463,14.920 16.232,15.000 16.000,15.000 C15.768,15.000 15.537,14.920 15.349,14.759 L2.000,3.317 L2.000,19.000 C2.000,19.552 2.449,20.000 3.000,20.000 ZM28.464,2.000 L3.536,2.000 L16.000,12.683 L28.464,2.000 Z'/%3e%3c/svg%3e");
+	      
+	}
+}
+.footer-content{
+	display: none;
+	@media (min-width: 1200px) {
+		padding-top: 16px;
+		padding-bottom: 16px;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		.footer-menu{
+			display: flex;
+			align-items: center;
+		    column-gap: 40px;
+			width: 100%;
+		}
+		.footer-menu a:last-child{
+			margin-left: auto;
+			
+		}
+	}
+}
+.fancy-item{
+	display: inline-flex;
+	width: fit-content;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.contact-item{
+	display: flex;
+	width: fit-content;
+	align-items: center;
+	column-gap: 10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	i{flex-shrink: 0;}
+}
+.nav-menu{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	max-width: 540px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	a{
+		font-size: 20px;
+		line-height: 1.6;
+		font-weight: 600;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		color: white;
+	}
+	li+li{margin-top: 16px;}
+	@media (min-width: 1200px) {
+		display: flex;
+		justify-content: space-between;
+		max-width: unset;
+		a{
+			color: var(--black);
+			font-size: 18px;
+			font-weight: 500;
+			width: fit-content;
+			border-bottom:1px solid currentColor;
+			&:hover{opacity: 0;}
+		}
+	}
+}
+.popup-wrapper[data-popup]{
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0,0,0,  .5);
+	
+	display: none;
+
+
+}
+.popup-wrapper.popup-open[data-popup]{
+	display: flex;
+	z-index: 10;
+}
+.popup-wrapper	.popup-body{
+	width: 100%;
+	max-width: 1000px;
+	background-color: #fff;
+	padding: 20px;
+		
 }
